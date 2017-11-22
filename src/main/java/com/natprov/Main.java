@@ -13,11 +13,13 @@ public class Main
 
         ArrayList<String> list = new ArrayList();
         Pattern p = Pattern.compile("[a-e]|[0-9]");
+        Process process = new Process();
+
         for (String i : args) {
             boolean valid = true;
             for (char j : i.toCharArray()) {
                 char lowerj = Character.toLowerCase(j);
-                if (Character.toString(lowerj).matches("[a-e]|[0-9]")) {
+                if (Character.toString(lowerj).matches("[a-f]|[0-9]")) {
 
                 } else {
                     valid = false;
@@ -28,9 +30,11 @@ public class Main
             } else {
                 System.out.println(i + "invalid mac");
             }
-            Process process = new Process();
-            process.process(list);
+
+
 
         }
+
+        process.process(list);
     }
 }
