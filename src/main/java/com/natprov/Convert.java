@@ -1,31 +1,37 @@
 package com.natprov;
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Convert {
 
     public String standard(String mac){
 
-        String first = mac.substring(0,2);
-        String second = mac.substring(2,4);
-        String third = mac.substring(4,6);
-        String four = mac.substring(6,8);
-        String five = mac.substring(8,10);
-        String six = mac.substring(10,12);
-
-        StringBuilder s = new StringBuilder();
-        String[] compenents = {first,second,third,four,five,six};
-        for (String i: compenents) {
-            String lower = i.toLowerCase();
-            s.append(lower + ":");
-        }
-
-        String convtMac = s.toString();
-
-
-        //convtMac = first + ":" + second + ":" + third + ":" + four.toLowerCase() + ":" + five + ":" + six;
-        return convtMac.substring(0,convtMac.length() -1);
+        Formatter format = new Formatter();
+        return format.formatter(mac);
     }
+
+    public String cmts(String mac){
+        Pattern cmtsMac = Pattern.compile("((?:\\d|\\w){4})\\.((?:\\d|\\w){4})\\.((?:\\d|\\w){4})");
+        Matcher matcher = cmtsMac.matcher(mac);
+        String first = null;
+        String second = null;
+        String third = null;
+
+
+           while(matcher.find()) {
+               first = matcher.group(1);
+               second = matcher.group(2);
+               third = matcher.group(3);
+           }
+
+        String combined = first + second + third;
+        Formatter formatter = new Formatter();
+        return formatter.formatter(combined);
+
+    }
+
 
 
 }

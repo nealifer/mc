@@ -19,7 +19,7 @@ public class Main
             boolean valid = true;
             for (char j : i.toCharArray()) {
                 char lowerj = Character.toLowerCase(j);
-                if (Character.toString(lowerj).matches("[a-f]|[0-9]")) {
+                if (Character.toString(lowerj).matches("[a-f]|[0-9]|\\.")) {
 
                 } else {
                     valid = false;

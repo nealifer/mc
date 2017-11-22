@@ -9,14 +9,21 @@ public class Process {
         for (String i : List) {
 
             Convert con = new Convert();
-            String mac = con.standard(i);
-            macs.add(mac);
+            //String mac = con.standard(i);
 
+            if(i.matches("(?:\\d|\\w){12}")){
+                String mac =con.standard(i);
+                macs.add(mac);
+            }
+            else if(i.matches("((?:\\d|\\w){4})\\.((?:\\d|\\w){4})\\.((?:\\d|\\w){4})")) {
+                String mac = con.cmts(i);
+                macs.add(mac);
+            }
         }
 
-        for (String i : macs) {
-            System.out.println(i);
+        Output o = new Output();
+        o.header(macs);
 
-        }
+
     }
 }
