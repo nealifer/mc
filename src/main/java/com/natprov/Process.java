@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Process {
 
-    public void process(ArrayList<String> List) {
+    public void process(ArrayList<String> List, String header) {
+
         ArrayList<String> macs = new ArrayList();
         for (String i : List) {
 
@@ -22,7 +23,7 @@ public class Process {
         }
 
         Output o = new Output();
-        o.header(macs);
+        o.header(macs, header);
 
 
     }
