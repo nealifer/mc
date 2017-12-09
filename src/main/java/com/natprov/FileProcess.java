@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class FileProcess {
 
     public ArrayList<String> process(File file) throws FileNotFoundException {
-        System.out.println(file);
         ArrayList<String> macs = new ArrayList<String>();
         Scanner sc = new Scanner(file);
 

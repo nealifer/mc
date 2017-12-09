@@ -2,9 +2,9 @@ package com.natprov;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Pattern;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
@@ -51,6 +51,7 @@ public class Main
 
 
         }
+
         else{
 
             List commandmacs = options.nonOptionArguments();
@@ -64,7 +65,13 @@ public class Main
                 macs.add(mac);
 
             }
-
+            if(macs.isEmpty()){
+                Scanner scan = new Scanner(System.in);
+                while(scan.hasNextLine()){
+                    String i = scan.nextLine();
+                    macs.add(i);
+                }
+            }
             for (String i : macs) {
                if (i.matches("-\\w")){
 
