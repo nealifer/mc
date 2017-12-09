@@ -5,11 +5,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Convert {
-
+    Formatter formatter = new Formatter();
     public String standard(String mac){
 
-        Formatter format = new Formatter();
-        return format.formatter(mac);
+
+        return formatter.formatter(mac);
     }
 
     public String cmts(String mac){
@@ -27,9 +27,16 @@ public class Convert {
            }
 
         String combined = first + second + third;
-        Formatter formatter = new Formatter();
+
         return formatter.formatter(combined);
 
+    }
+
+    public String colondel(String mac){
+        String parts[] = mac.split(":");
+        String combined = parts[0] + parts[1] + parts[2] + parts[3] + parts[4] + parts[5];
+
+        return formatter.formatter(combined);
     }
 
 

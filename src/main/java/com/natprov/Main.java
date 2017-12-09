@@ -57,7 +57,6 @@ public class Main
             List commandmacs = options.nonOptionArguments();
 
             ArrayList<String> list = new ArrayList();
-            Pattern p = Pattern.compile("[a-e]|[0-9]");
             Process process = new Process();
             ArrayList<String> macs = new ArrayList<String>();
             for(Object i: commandmacs){
@@ -72,30 +71,7 @@ public class Main
                     macs.add(i);
                 }
             }
-            for (String i : macs) {
-               if (i.matches("-\\w")){
-
-               }
-                   else {
-                    boolean valid = true;
-                    for (char j : i.toCharArray()) {
-                        char lowerj = Character.toLowerCase(j);
-                        if (Character.toString(lowerj).matches("[a-f]|[0-9]|\\.")) {
-
-                        } else {
-                            valid = false;
-                        }
-                    }
-                    if (valid) {
-                        list.add(i);
-                    } else {
-                        System.out.println(i + "invalid mac");
-                    }
-
-                }
-
-            }
-            process.process(list, header);
+            process.process(macs, header);
 
 
         }
