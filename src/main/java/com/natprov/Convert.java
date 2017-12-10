@@ -33,10 +33,12 @@ public class Convert {
     }
 
     public String colondel(String mac){
-        String parts[] = mac.split(":");
+        String parts[] = mac.split(":|-|\\.");
         String combined = parts[0] + parts[1] + parts[2] + parts[3] + parts[4] + parts[5];
 
-        return formatter.formatter(combined);
+
+       return formatter.formatter(combined);
+
     }
 
 

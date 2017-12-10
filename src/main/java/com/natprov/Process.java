@@ -1,10 +1,12 @@
 package com.natprov;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Process {
 
-    public void process(ArrayList<String> List, String header) {
+    public void process(ArrayList<String> List, String header, boolean outputFile) {
 
         ArrayList<String> macs = new ArrayList();
         for (String i : List) {
@@ -19,9 +21,10 @@ public class Process {
 
                 macs.add(mac);
 
-            } else if (i.matches("((?:(?:(?i)[a-f]|[0-9]){2}:){5}(?:(?i)[a-f]|[0-9]){2})")) {
+            } else if (i.matches("((?:(?:(?i)[a-f]|[0-9]){2}(?:-|\\.|:)){5}(?:(?i)[a-f]|[0-9]){2})")) {
                 String mac = con.colondel(i);
                 macs.add(mac);
+
 
             }
             else{
@@ -30,7 +33,22 @@ public class Process {
 
 
         }
-        Output o = new Output();
-        o.header(macs, header);
+        if(outputFile) {
+            System.out.println("Please enter name of output file?");
+            Scanner scanner = new Scanner(System.in);
+            String name = scanner.nextLine();
+
+            OutputFile o = new OutputFile();
+            try {
+                o.header(macs, header,name);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Output o = new Output();
+            o.header(macs, header);
+        }
     }
 }
