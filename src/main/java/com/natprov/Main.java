@@ -2,25 +2,24 @@ package com.natprov;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+
 import joptsimple.AbstractOptionSpec;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
+import static java.lang.System.out;
 
 import static java.lang.System.exit;
 
 import java.util.Arrays;
 
-/**
- * Hello world!
- *
- */
 
 public class Main
 
@@ -39,8 +38,15 @@ public class Main
 
         OptionSet options = parser.parse(args);
         if(options.has("help")){
-
-            parser.printHelpOn(System.out);
+        	
+        	String info = " \n Mac converter is a tool to convert macs to stanard colon(:) delemted format \n\n"
+        			+ "Accepts following formats: AAAA.AAAA.AAAA  AABBCCDDEEFF\n"
+        			+ "AA:AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF or AA.BB.DD.CC.DD.FF \n \n";
+        	
+        	
+        	out.println(info);
+            parser.printHelpOn(out);
+          
             exit('1');
 
         }
