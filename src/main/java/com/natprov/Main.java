@@ -39,7 +39,7 @@ public class Main
         OptionSet options = parser.parse(args);
         if(options.has("help")){
         	
-        	String info = " \n Mac converter is a tool to convert macs to stanard colon(:) delemted format \n\n"
+        	String info = "\n Mac converter is a tool to convert macs to stanard colon(:) delemted format \n\n"
         			+ "Accepts following formats: AAAA.AAAA.AAAA  AABBCCDDEEFF\n"
         			+ "AA:AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF or AA.BB.DD.CC.DD.FF \n \n";
         	
@@ -97,8 +97,6 @@ public class Main
 
 
         }
-
-
 
 
     }
