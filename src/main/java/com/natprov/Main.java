@@ -27,15 +27,15 @@ public class Main
 {
 
     public static void main(String[] args) throws IOException {
-        String header = "";
+        boolean header = false;
         boolean output = false;
         OptionParser parser = new OptionParser();
 
 
-        OptionSpec<String> head =parser.accepts("h","header, example 1,6,").withOptionalArg().defaultsTo("1,6,").ofType(String.class);
+        parser.accepts("h","Standard mac header 1,6,");
         OptionSpec<File> file =  parser.acceptsAll(Arrays.asList("f","file"),"File name").withRequiredArg().ofType(File.class);
         parser.accepts("o","ouput file");
-        parser.acceptsAll(Arrays.asList( "v","help"), "help screjaven").forHelp();
+        parser.acceptsAll(Arrays.asList( "v","help"), "help screen").forHelp();
 
         OptionSet options = parser.parse(args);
         if(options.has("help")){
@@ -45,8 +45,8 @@ public class Main
 
         }
 
-        if(options.has("h")){
-            header = options.valueOf(head);
+        if(options.has("h")) {
+            header = true;
         }
 
         if(options.has("o")){

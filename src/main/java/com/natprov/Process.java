@@ -1,14 +1,17 @@
 package com.natprov;
 
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Process {
 
-    public void process(ArrayList<String> List, String header, boolean outputFile) {
+    public void process(ArrayList<String> List, boolean header, boolean outputFile) {
 
         ArrayList<String> macs = new ArrayList();
+        ArrayList<String> invalid = new ArrayList<String>();
         for (String i : List) {
 
             Convert con = new Convert();
@@ -28,27 +31,59 @@ public class Process {
 
             }
             else{
-                System.out.println(i + "invalid mac");
+               invalid.add(i);
             }
 
 
         }
+
+
         if(outputFile) {
-            System.out.println("Please enter name of output file?");
+            System.out.print("Please enter name of output file?");
             Scanner scanner = new Scanner(System.in);
-            String name = scanner.nextLine();
+            String name = scanner.next();
 
             OutputFile o = new OutputFile();
             try {
-                o.header(macs, header,name);
-
+                if(header) {
+                    o.header(macs, name);
+                }
+                else{
+                    o.standard(macs, name);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         else{
             Output o = new Output();
-            o.header(macs, header);
+            if(header){
+
+                o.header(macs);
+            }
+        else{
+                o.standard(macs);
+            }
         }
+
+    if(!invalid.isEmpty()){
+            Scanner scanner = new Scanner(System.in);
+            int invalidAmount = invalid.size();
+            System.out.print("There is " + invalidAmount + " invalid mac." + " Do you want them in an ouput file yes/no?");
+            String answer = scanner.next();
+            if(answer.equals("yes") || answer.equals("y")){
+                System.out.print("Name of output file ");
+                String filename = scanner.next();
+                OutputFile invalidOut = new OutputFile();
+                try {
+                    invalidOut.inValid(invalid, filename);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+    }
+
     }
 }

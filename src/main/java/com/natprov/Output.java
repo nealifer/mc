@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 public class Output {
 
-    public void colonDivided(ArrayList<String> macs, String header){
-
+    public void standard(ArrayList<String> macs){
 
         for (String i : macs) {
             System.out.println(i);
@@ -14,10 +13,10 @@ public class Output {
 
     }
 
-    public void header(ArrayList<String> macs, String header){
+    public void header(ArrayList<String> macs){
 
         for (String i : macs) {
-            System.out.println(header + i);
+            System.out.println("1,6," + i);
 
         }
     }
